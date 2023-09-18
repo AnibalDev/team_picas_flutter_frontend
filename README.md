@@ -1,16 +1,17 @@
-# team_picas_flutter_frontend
+# Team Picas => Frontend
 
-Juego tradicional Nicaraguense digitalizado con las reglas clasicas.
+Nuestra aplicación se llama  *Desmoche: Baraja Pinolera*
 
-## Getting Started
+Es una versión digital del clasico Desmoche **Nicaraguense**. 
 
-This project is a starting point for a Flutter application.
+### Convervando las reglas clasicas:
+- Victoria por color 
+- 4 cuerpos
+- *peladilla* (Sin juegos)
+  
 
-A few resources to get you started if this is your first Flutter project:
+## Porque elegimos flutter?
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Queremos que nuestra aplicacion se ejecute en todos los dispositivos moviles, tanto IOS como Android.
+Y flutter es un framework moderno que cumple estas caracteristicas y a la vez mantenemos una velocidad nativa
+ya que flutter compila creando un proyecto para xcode y android studio.
