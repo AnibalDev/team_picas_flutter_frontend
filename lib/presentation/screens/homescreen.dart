@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_picas_flutter_frontend/presentation/views/homeview.dart';
+import 'package:team_picas_flutter_frontend/presentation/views/playview.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -66,11 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: <Widget>[
         HomeView(),
-        Container(
-          color: Colors.white,
-          alignment: Alignment.center,
-          child: const Text('Page 2'),
-        ),
+        PlayView(),
         Container(
           color: Colors.white,
           alignment: Alignment.center,

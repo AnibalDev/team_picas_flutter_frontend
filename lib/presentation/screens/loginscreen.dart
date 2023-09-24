@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:team_picas_flutter_frontend/components/authbutton.dart';
-import 'package:team_picas_flutter_frontend/components/texfieldcustom.dart';
+import 'package:team_picas_flutter_frontend/presentation/components/authbutton.dart';
+import 'package:team_picas_flutter_frontend/presentation/components/texfieldcustom.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,22 +12,27 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _HomeViewState extends State<LoginScreen> {
-  /*
-  final IO.Socket _socket = IO.io('http://localhost:8080',
-      IO.OptionBuilder().setTransports(['websocket']).build());
 
-  _connectSocket() {
-    _socket.onConnect((data) => print('Coneccion Establecida'));
-    _socket.onConnectError((data) => print('Connection Error: $data'));
-    _socket.onDisconnect((data) => print('Server disconnection error'));
-  }
-  */
+  String _name = "";
+  String _password = "";
+
+  
 
   @override
   void initState() {
     super.initState();
-    //_connectSocket();
+    
   }
+
+/*
+  _sendMessage() {
+    _socket.emit('message', {
+      'nombre': 'nombre',
+      'id': 'nombre',
+      'example': 'nombre',
+    });
+  }
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +81,7 @@ class _HomeViewState extends State<LoginScreen> {
                         width: 300,
                         child: FilledButton(
                           onPressed: () {
+                          //  _sendMessage();
                             Navigator.pushReplacementNamed(context, '/home');
                           },
                           child: Text("Ingresar Sesión"),
