@@ -19,10 +19,23 @@ class GameScreen extends StatelessWidget {
       '4t',
       '4p',
       '4d',
+    ],
+  ];
+  static List<List<String>> player3Games = <List<String>>[
+    [
+      '1p',
+      '2p',
+      '3p',
     ]
   ];
-  static List<List<String>> player3Games = <List<String>>[[]];
-  static List<List<String>> player4Games = <List<String>>[[]];
+  static List<List<String>> player4Games = <List<String>>[
+    [
+      '5t',
+      '5c',
+      '5p',
+      '5d',
+    ]
+  ];
 
   @override
   Widget build(BuildContext context) {

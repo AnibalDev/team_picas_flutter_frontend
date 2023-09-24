@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(204, 218, 41, 28)),
         useMaterial3: true,
       ),
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),

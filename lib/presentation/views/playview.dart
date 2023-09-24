@@ -43,7 +43,7 @@ class PlayView extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30), color: Colors.grey),
-            child: Center(child: Text('Partida Personalizada')),
+            child: Center(child: Text('Por definir')),
             width: double.infinity,
             height: 300,
           ),
