@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class PlayerView extends StatefulWidget {
   const PlayerView(
-      {super.key, required this.name, required this.ramainedCards});
+      {super.key,
+      required this.name,
+      required this.ramainedCards,
+      required this.imagePath});
   final String name;
   final int ramainedCards;
-  //final String imagePath;
+  final String imagePath;
 
   @override
   State<PlayerView> createState() => _PlayerViewState();
@@ -70,7 +73,7 @@ class _PlayerViewState extends State<PlayerView> {
           radius: 24,
           child: CircleAvatar(
             radius: 22,
-            backgroundImage: AssetImage('assets/images/heyling.png'),
+            backgroundImage: AssetImage(widget.imagePath),
           ),
         ),
       ],

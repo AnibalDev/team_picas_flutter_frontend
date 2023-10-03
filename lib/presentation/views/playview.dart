@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:team_picas_flutter_frontend/controllers/socket_game_controller.dart';
+import 'package:team_picas_flutter_frontend/models/new_room_model.dart';
+import 'package:team_picas_flutter_frontend/presentation/views/colaview.dart';
 
-class PlayView extends StatelessWidget {
+class PlayView extends StatefulWidget {
   const PlayView({super.key});
+
+  @override
+  State<PlayView> createState() => _PlayViewState();
+}
+
+class _PlayViewState extends State<PlayView> {
+  @override
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      SocketGameController.get(context)
+        ..init()
+        ..connect(
+          onConnectionError: (data) {
+            print(data);
+          },
+        );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +39,13 @@ class PlayView extends StatelessWidget {
           SizedBox(height: 10),
           GestureDetector(
             onTap: () {
-              Navigator.pushReplacementNamed(context, '/queue');
+              SocketGameController.get(context).joinServer('Mi Usuario 2',
+                  onSubscribe: () {
+                SocketGameController.get(context).joinPublicRoom();
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => QueueView()));
+                //Navigator.pushNamed(context, '/queue');
+              });
             },
             child: Container(
               decoration: BoxDecoration(

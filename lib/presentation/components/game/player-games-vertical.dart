@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_picas_flutter_frontend/models/roommodel.dart';
 
 class PlayerGamesVertical extends StatefulWidget {
   const PlayerGamesVertical(
@@ -6,7 +7,7 @@ class PlayerGamesVertical extends StatefulWidget {
       required this.playerGames,
       this.orientation = MainAxisAlignment.start});
   final MainAxisAlignment orientation;
-  final List<List<String>> playerGames;
+  final List<List<CardModel>> playerGames;
   @override
   State<PlayerGamesVertical> createState() => _PlayerGamesVerticalState();
 }
@@ -33,7 +34,7 @@ class _PlayerGamesVerticalState extends State<PlayerGamesVertical> {
                           border: Border.all(width: 0.2, color: Colors.grey),
                         ),
                         child: Image.asset(
-                          'assets/cards/${j}.png',
+                          'assets/cards/${j.id}.png',
                         ),
                       ),
                     );

@@ -1,47 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:team_picas_flutter_frontend/presentation/components/playerview.dart';
-import 'package:team_picas_flutter_frontend/presentation/components/player-games-vertical.dart';
-import 'package:team_picas_flutter_frontend/presentation/components/player-games.dart';
-import 'package:team_picas_flutter_frontend/presentation/components/playerhand.dart';
+import 'package:provider/provider.dart';
+import 'package:team_picas_flutter_frontend/controllers/game_provider.dart';
+import 'package:team_picas_flutter_frontend/models/roommodel.dart';
+import 'package:team_picas_flutter_frontend/presentation/components/game/playerview.dart';
+import 'package:team_picas_flutter_frontend/presentation/components/game/player-games-vertical.dart';
+import 'package:team_picas_flutter_frontend/presentation/components/game/player-games.dart';
+import 'package:team_picas_flutter_frontend/presentation/components/game/playerhand.dart';
+import 'package:team_picas_flutter_frontend/viewmodel/roomviewmodel.dart';
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
-  static List<String> playerHand = <String>['7c', '8d', '9p', '13t'];
-  static List<List<String>> player1Games = <List<String>>[[]];
-  static List<List<String>> player2Games = <List<String>>[
-    [
-      '1c',
-      '2c',
-      '3c',
-    ],
-    [
-      '4c',
-      '4t',
-      '4p',
-      '4d',
-    ],
-  ];
-  static List<List<String>> player3Games = <List<String>>[
-    [
-      '1p',
-      '2p',
-      '3p',
-    ]
-  ];
-  static List<List<String>> player4Games = <List<String>>[
-    [
-      '5t',
-      '5c',
-      '5p',
-      '5d',
-    ]
-  ];
+
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+  late RoomViewModel vm;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    vm = context.watch<GameProvider>().gameRoom;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Room Name'),
+        title: Text(vm.roomName),
       ),
       body: SafeArea(
         bottom: false,
@@ -49,7 +36,7 @@ class GameScreen extends StatelessWidget {
           children: [
             //Background Gradient
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Colors.white, Colors.lightBlue],
                     begin: Alignment.topCenter,
@@ -70,41 +57,45 @@ class GameScreen extends StatelessWidget {
             Column(
               children: [
                 PlayerView(
-                  name: 'Jose Aleman',
-                  ramainedCards: 0,
+                  name: vm.rivals[0].playerName,
+                  ramainedCards: vm.rivals[0].playerHand.length,
+                  imagePath: 'assets/images/jose-aleman.png',
                 ),
-                PlayerGames(playerGames: player1Games),
+                PlayerGames(playerGames: vm.rivals[0].playerGames),
                 SizedBox(height: 40),
                 Row(
                   children: [
                     PlayerView(
-                      name: 'Heyling',
-                      ramainedCards: 9,
+                      name: vm.rivals[1].playerName,
+                      ramainedCards: vm.rivals[1].playerHand.length,
+                      imagePath: 'assets/images/heyling.png',
                     ),
                     Spacer(),
                     PlayerView(
-                      name: 'Odalys',
-                      ramainedCards: 9,
+                      name: vm.rivals[2].playerName,
+                      ramainedCards: vm.rivals[2].playerHand.length,
+                      imagePath: 'assets/images/odalys.png',
                     ),
                   ],
                 ),
                 Row(
                   children: [
-                    PlayerGamesVertical(playerGames: player2Games),
+                    PlayerGamesVertical(playerGames: vm.rivals[1].playerGames),
                     PlayerGamesVertical(
-                      playerGames: player3Games,
+                      playerGames: vm.rivals[2].playerGames,
                       orientation: MainAxisAlignment.end,
                     ),
                   ],
                 ),
                 SizedBox(height: 40),
-                PlayerGames(playerGames: player4Games),
+                PlayerGames(playerGames: vm.myself.playerGames),
                 SizedBox(height: 8),
                 PlayerView(
-                  name: 'Anibal',
-                  ramainedCards: 9,
+                  name: vm.myself.playerName,
+                  ramainedCards: vm.myHand.length,
+                  imagePath: 'assets/images/mayrel.png',
                 ),
-                PlayerHand(playerHand: playerHand),
+                PlayerHand(playerHand: vm.myHand),
                 SizedBox(
                   height: 30,
                 )

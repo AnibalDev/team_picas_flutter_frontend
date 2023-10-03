@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:team_picas_flutter_frontend/models/roommodel.dart';
 
 class PlayerGames extends StatefulWidget {
   const PlayerGames({super.key, required this.playerGames});
 
-  final List<List<String>> playerGames;
+  final List<List<CardModel>> playerGames;
   @override
   State<PlayerGames> createState() => _PlayerGameState();
 }
@@ -27,7 +28,7 @@ class _PlayerGameState extends State<PlayerGames> {
                         border: Border.all(width: 0.2, color: Colors.grey),
                       ),
                       child: Image.asset(
-                        'assets/cards/${j}.png',
+                        'assets/cards/${j.id}.png',
                       ),
                     ),
                   );
